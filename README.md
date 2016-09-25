@@ -43,3 +43,20 @@ sudo modprobe rtl8723be
 ```
 
 重启。OK
+
+---
+
+装完驱动后，发现过一段时间就会自动掉线，掉线后不能重连，相当的不稳定。
+
+最终在网上找到了解决方法：
+
+```shell
+sudo echo "options rtl8723be fwlps=0 swlps=0" > /etc/modprobe.d/rtl8723be.conf  
+sudo reboot
+```
+
+
+安装的ubuntu系统，相信其他系统应该也一样使用。
+
+参考：
+[https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1240940](https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1240940)
